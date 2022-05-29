@@ -1,0 +1,22 @@
+{% extends 'todo/base.html' %}
+{% block  content %}
+<div class="container">
+
+
+	<h1> Update your task</h1>
+
+	<form method="POST" action="">
+        {% csrf_token %}
+		<input class="form-control" value='{{todo.name}}' type="text" placeholder="Task name" name='taskname' id='taskname'>
+        <input class="form-control"  value='{{todo.description}}' type="text" placeholder="Task description" name='description' id='description'>
+        <p>
+           
+            <input class="form-check-input" type="checkbox" value='' name='task-state' id="task-state">
+  <label class="form-check-label" for="task-state">
+    Finished
+  </label>
+
+        </p>
+		<input class="btn btn-sm btn-success" type="submit" value="Update" name="Update">
+	</form>
+{% endblock %}

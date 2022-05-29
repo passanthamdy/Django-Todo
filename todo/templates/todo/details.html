@@ -1,0 +1,20 @@
+{% extends 'todo/base.html' %}
+{% block  content %}
+<div class='container mt-4'>
+<div class="card">
+    <div class="card-header">
+      {{todo.name}}
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{todo.description}}.</p>
+        <p> {% if todo.state %}
+            Finished
+            {% else %}
+            Not Finished 
+            {% endif %} </p>
+      </blockquote>
+    </div>
+  </div>
+</div>
+{%endblock content%}

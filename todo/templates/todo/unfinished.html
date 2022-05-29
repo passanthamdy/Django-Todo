@@ -1,0 +1,47 @@
+{% extends 'todo/base.html' %}
+{% block  content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">State</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+     {% for todo in todos  %}
+     
+     <tr>
+       <th>{{todo.id}}</th>
+       <th>
+       {{todo.name}}
+       </th>
+       <th>
+         {{todo.description}}
+       </th>
+       <th>
+        {% if todo.state %}
+        Finished
+        {% else %}
+        Not Finished 
+        {% endif %}
+       </th>
+       <th>
+        <a  class = 'btn btn-success'  style="margin:2px"  href="{% url 'todo:done' todo.id%}">{% if todo.state %}
+          Not Done
+          {% else %}
+          Done 
+          {% endif %}</a>
+        <a  class = 'btn btn-danger'   style="margin:2px"  href="{% url 'todo:delete' todo.id%}">Delete</a>
+        <a  class = 'btn btn-primary'  style="margin:2px"  href="{% url 'todo:details' todo.id%}">Show</a>
+        <a  class = 'btn btn-info'  style="margin:2px"  href="{% url 'todo:update' todo.id%}">Update</a>
+
+             </th>
+     </tr>
+     {% endfor %}
+    </tbody>
+  </table>
+  
+  {% endblock content %}
